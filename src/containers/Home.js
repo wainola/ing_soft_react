@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux'
 import {
   Responsive,
   Container,
-  Grid
+  Grid,
+  Segment
 } from 'semantic-ui-react'
 
 export class Home extends Component {
@@ -14,14 +15,18 @@ export class Home extends Component {
       <Responsive>
         <Container>
           <Grid>
-            <Grid.Column>
-              <Grid.Row>
-                Image
-              </Grid.Row>
-              <Grid.Row>
-                Login
-              </Grid.Row>
-            </Grid.Column>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Segment basic>
+                  Image
+                </Segment>
+              </Grid.Column>
+              <Grid.Column>
+                <Segment basic>
+                  Login
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Container>
       </Responsive>
