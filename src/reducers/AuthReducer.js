@@ -5,8 +5,7 @@ import {
 } from '../actions/types'
 
 const initialState = {
-  user: 'alumno',
-  password: 'password'
+  login: false
 }
 
 export default function(state=initialState, action){
@@ -17,12 +16,14 @@ export default function(state=initialState, action){
     case OK_LOGIN:
       console.log(2, action.payload)
       let {user, password} = action.payload
-      if(user !== initialState.user && password !== initialState.password){
+      if(user !== 'alumno' && password !== 'password'){
         return { login: false }
       }
       return { ...initialState, login: true }
     case FAIL_LOGIN:
       console.log(3, action.payload)
       return { login: false }
+    default:
+      return state
   }
 }
