@@ -17,8 +17,9 @@ export const failLogin = payload => ({
   payload
 })
 
-export const Login = body => dispatch => {
+export const login = body => dispatch => {
+  console.log('login action', body)
   dispatch(doLogin(body))
   dispatch(okLogin(body))
-  dispatch(failLogin(body))
+  // dispatch(failLogin(body))
 }

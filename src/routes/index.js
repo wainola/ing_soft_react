@@ -10,6 +10,7 @@ import GuestRoute from './GuestRouter/GuestRoute'
 import AuthRoute from './AuthRouter/AuthRoute'
 import Navbar from '../components/Navbar'
 import Home from '../containers/Home'
+import HomePage from '../containers/HomePage'
 
 export class Routes extends Component {
   constructor(props){
@@ -42,7 +43,8 @@ export class Routes extends Component {
           </Sidebar>
           <Sidebar.Pusher>
             <Navbar visible={visible} handleVisible={this.handleVisible} />
-            <Route location={location} exact path='/' component={Home} />
+            <GuestRoute location={location} exact path='/' component={Home} />
+            <AuthRoute location={location} exact path='/HomePage' component={HomePage} />
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

@@ -7,19 +7,26 @@ import {
   Container,
   Grid,
   Segment,
-  Tab
+  Tab,
+  Image
 } from 'semantic-ui-react'
+
+import Alumno from './Alumno/Alumno'
+import Apoderados from './Apoderados/Apoderados'
+import Cliente from './Cliente/Cliente'
+
+import imagen from '../assets/adult-book-business.jpg'
 
 
 const panes = [
   {
-    menuItem: 'Alumnos', render: () => <Tab.Pane>Alumno</Tab.Pane>
+    menuItem: 'Alumnos', render: () => <Tab.Pane><Alumno/></Tab.Pane>
   },
   {
-    menuItem: 'Apoderados', render: () => <Tab.Pane>Apoderados</Tab.Pane>
+    menuItem: 'Apoderados', render: () => <Tab.Pane><Apoderados /></Tab.Pane>
   },
   {
-    menuItem: 'Ejecutivo', render: () => <Tab.Pane>Ejecutivo</Tab.Pane>
+    menuItem: 'Ejecutivo', render: () => <Tab.Pane><Cliente /></Tab.Pane>
   }
 ]
 
@@ -29,16 +36,15 @@ export class Home extends Component {
     return (
       <Responsive>
         <Container>
-          <Grid>
+          <Grid stackable>
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Segment basic>
-                  Image
+                  <Image src={imagen} />
                 </Segment>
               </Grid.Column>
               <Grid.Column>
                 <Segment basic>
-                  Login
                   <Tab panes={panes}/>
                 </Segment>
               </Grid.Column>

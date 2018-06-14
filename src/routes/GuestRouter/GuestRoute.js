@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const AuthRoute = ({ isAuthenticated, componet: Component, location, ...rest }) => {
+  console.log('GuestRoute', isAuthenticated)
   return (
     <Route 
       {...rest}
@@ -11,7 +12,7 @@ const AuthRoute = ({ isAuthenticated, componet: Component, location, ...rest }) 
 }
 
 function mapStateToProps({auth}){
-  return { isAuthenticated: auth.isAuthenticated }
+  return { isAuthenticated: auth.login }
 }
 
 export default connect(mapStateToProps)(AuthRoute)
