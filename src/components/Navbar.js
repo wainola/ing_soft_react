@@ -46,10 +46,10 @@ class Navbar extends Component{
                     :
                     <Menu.Item
                         as={Link}
-                        to='/signin'
+                        to='/'
                         position='right'
                         color='blue'
-                        name='Signin'
+                        name='Logout'
                         active={activeItem === 'Signin'}
                         onClick={this.handleItemClick} />
                     }

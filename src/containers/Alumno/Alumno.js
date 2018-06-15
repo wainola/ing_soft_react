@@ -13,14 +13,25 @@ import {
 import { login } from '../../actions/index'
 
 class AlumnoForm extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      loggged: false
+    }
+  }
   onSubmitAlumno = e => {
     e.preventDefault()
     const alumno = e.target[0].value
     const password = e.target[1].value
     console.log('submit alumno', alumno, password)
     this.props.login({alumno, password})
+    this.setState({ logged: true})
   }
   render() {
+    console.log('this.props.Alumno', this.props)
+    if(this.state.logged){
+      this.props.history.push('/HomePage')
+    }
     return (
       <Responsive>
         <Container>

@@ -17,22 +17,19 @@ import Cliente from './Cliente/Cliente'
 
 import imagen from '../assets/adult-book-business.jpg'
 
-
-const panes = [
-  {
-    menuItem: 'Alumnos', render: () => <Tab.Pane><Alumno/></Tab.Pane>
-  },
-  {
-    menuItem: 'Apoderados', render: () => <Tab.Pane><Apoderados /></Tab.Pane>
-  },
-  {
-    menuItem: 'Ejecutivo', render: () => <Tab.Pane><Cliente /></Tab.Pane>
-  }
-]
-
 export class Home extends Component {
   render() {
-    console.log(this.props)
+    const panes = [
+      {
+        menuItem: 'Alumnos', render: () => <Tab.Pane><Alumno {...this.props}  /></Tab.Pane>
+      },
+      {
+        menuItem: 'Apoderados', render: () => <Tab.Pane><Apoderados /></Tab.Pane>
+      },
+      {
+        menuItem: 'Ejecutivo', render: () => <Tab.Pane><Cliente /></Tab.Pane>
+      }
+    ]
     return (
       <Responsive>
         <Container>
