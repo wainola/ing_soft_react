@@ -16,10 +16,10 @@ export default function(state=initialState, action){
       console.log(1, action.payload)
       return { login: 'attempting to login' }
     case OK_LOGIN:
-      localStorage.setItem('user', JSON.stringify(user, password))
       console.log(2, action.payload)
-      let {user, password} = action.payload
-      if(user !== 'alumno' && password !== 'password'){
+      let {alumno, password} = action.payload
+      localStorage.setItem('user', JSON.stringify({username: alumno, password: password, role: 'STUDENT'}))
+      if(alumno !== 'alumno' && password !== 'password'){
         return { login: false }
       }
       return { ...initialState, login: true, role: action.payload.role }

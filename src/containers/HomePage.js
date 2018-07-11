@@ -4,7 +4,7 @@ import { withSwalInstance } from 'sweetalert2-react'
 import swal from 'sweetalert2'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getPayments, logout } from '../actions/index'
+import { getPayments, logout, sendPayments } from '../actions/index'
 import {
   Grid,
   Responsive,
@@ -28,14 +28,35 @@ export class HomePage extends Component {
     super(props)
     this.state = {
       show: false,
-      countLogged: 0
+      countLogged: 0,
+      payment: {
+        monto: ''
+      }
     }
+  }
+  onChange = e => {
+    console.log('e', e.target.name, e.target.value)
+    this.setState({
+      ...this.state,
+      payment:{
+        ...this.state.payment,
+        [e.target.name]: e.target.value
+      }
+    })
   }
   onSubmitHomePage = e => {
     e.preventDefault()
+    console.log('this.state', this.state)
     this.setState({
       show: !this.state.show
     })
+    if(this.state.monto !== ''){
+      let body = this.state.payment.monto
+      console.log('body', body)
+
+      this.props.sendPayments(body)
+      document.forms[0].reset()
+    }
   }
   closeSwal = () => {
     this.setState({
@@ -43,7 +64,7 @@ export class HomePage extends Component {
     })
   }
   render() {
-    const role = !lodash.isUndefined(this.props.auth.role) ? this.props.auth.role : 'NO_ROLE'
+    const role = JSON.parse(localStorage.getItem('user')).role
     return (
       <Responsive>
         <Container>
@@ -56,15 +77,15 @@ export class HomePage extends Component {
                   <Form onSubmit={this.onSubmitHomePage}>
                     <Form.Field>
                       <label>Fecha de Pago</label>
-                      <input type="text" placeholder='dd/mm/yyyy'/>
+                      <input type="text" placeholder='dd/mm/yyyy' name='fecha_pago' onChange={this.onChange}/>
                     </Form.Field>
                     <Form.Field>
                       <label>Monto</label>
-                      <input type="text" placeholder='monto en pesos'/>
+                      <input type="text" placeholder='monto en pesos' name='monto' onChange={this.onChange}/>
                     </Form.Field>
                     <Form.Field>
                       <label>Descripción</label>
-                      <input type="text" placeholder='descripcion'/>
+                      <input type="text" placeholder='descripcion' name='descripcion' onChange={this.onChange}/>
                     </Form.Field>
                     <Form.Field>
                       <Button color='blue' inverted>Generar Pago</Button>
@@ -96,7 +117,7 @@ function mapStateToProps({pago, auth}){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({getPayments, logout}, dispatch)
+  return bindActionCreators({getPayments, logout, sendPayments}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
