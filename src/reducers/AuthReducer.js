@@ -1,7 +1,8 @@
 import {
   DO_LOGIN,
   OK_LOGIN,
-  FAIL_LOGIN
+  FAIL_LOGIN,
+  LOGOUT
 } from '../actions/types'
 
 const initialState = {
@@ -19,9 +20,11 @@ export default function(state=initialState, action){
       if(user !== 'alumno' && password !== 'password'){
         return { login: false }
       }
-      return { ...initialState, login: true }
+      return { ...initialState, login: true, role: action.payload.role }
     case FAIL_LOGIN:
       console.log(3, action.payload)
+      return { login: false }
+    case LOGOUT:
       return { login: false }
     default:
       return state

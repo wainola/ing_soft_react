@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { logout } from '../actions/index'
 
 class Navbar extends Component{
     constructor(props){
@@ -64,5 +67,13 @@ Navbar.propTypes = {
 	handleVisible: PropTypes.func.isRequired
 }
 
-export default Navbar
+function mapStateToProps({ auth }){
+    return { auth }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({logout}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 

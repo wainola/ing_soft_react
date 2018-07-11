@@ -22,7 +22,7 @@ export class Cliente extends Component {
     e.preventDefault()
     const alumno = e.target[0].value
     const password = e.target[1].value
-    this.props.login({alumno, password})
+    this.props.login({alumno, password, role:'STUDENT'})
     this.setState({ logged: true })
   }
   render() {

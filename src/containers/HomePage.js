@@ -18,6 +18,9 @@ import {
 } from 'semantic-ui-react'
 import * as lodash from 'lodash'
 
+import GetStudents from './GetStudents'
+import MyPayments from './MyPayments'
+
 const SweetAlert = withSwalInstance(swal)
 
 export class HomePage extends Component {
@@ -28,7 +31,7 @@ export class HomePage extends Component {
     }
   }
   componentWillMount(){
-    this.props.getPayments()
+    // this.props.getPayments()
 
   }
   onSubmitHomePage = e => {
@@ -44,6 +47,7 @@ export class HomePage extends Component {
   }
   render() {
     console.log('this.props', this.props)
+    const role = !lodash.isUndefined(this.props.auth.role) ? this.props.auth.role : 'NO_ROLE'
     return (
       <Responsive>
         <Container>
@@ -74,7 +78,8 @@ export class HomePage extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment raised>
-                  
+                <p>Role: {role}</p>
+                { role === 'STUDENT' ? <MyPayments /> : <GetStudents />}
                   <SweetAlert
                       show={this.state.show}
                       title={'Éxito al generar pago'}
@@ -91,8 +96,8 @@ export class HomePage extends Component {
   }
 }
 
-function mapStateToProps({pago}){
-  return { pago }
+function mapStateToProps({pago, auth}){
+  return { pago, auth }
 }
 
 function mapDispatchToProps(dispatch){

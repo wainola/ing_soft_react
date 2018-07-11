@@ -9,7 +9,8 @@ import {
   CREATE_GRADE,
   GET_GRADES,
   CREATE_CONTRACT,
-  GET_CONTRATS
+  GET_CONTRATS,
+  LOGOUT
 } from './types'
 import axios from 'axios'
 
@@ -34,6 +35,10 @@ export const login = body => dispatch => {
   dispatch(okLogin(body))
   // dispatch(failLogin(body))
 }
+
+export const logout = payload => ({
+  type: LOGOUT
+})
 
 export const sendPayments = payload => ({
   type: SEND_PAYMENTS,
