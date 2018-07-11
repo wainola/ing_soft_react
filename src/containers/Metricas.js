@@ -6,6 +6,7 @@ import {
   Doughnut
 } from 'react-chartjs-2'
 import { data } from './data'
+import { Link } from 'react-router-dom'
 
 const dataBar = {
   labels: ['Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre'],
@@ -52,12 +53,13 @@ export class Metricas extends Component {
           <Grid>
             <Grid.Row columns={2}>
               <Grid.Column>
+                <Link to='/HomePage'>Volver al inicio</Link>
                 <Segment raised>
                   <Line data={data} />
                 </Segment>
               </Grid.Column>
               <Grid.Column>
-                <Segment raised>
+                <Segment raised style={{ marginTop: '35px'}}>
                  <Bar
                 data={dataBar}
                 width={100}

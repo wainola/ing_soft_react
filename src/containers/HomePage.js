@@ -75,7 +75,6 @@ export class HomePage extends Component {
                 { role === 'EXECUTIVE' ? <Link to='/Metricas'>Métricas</Link> : <Link to='/DatosAlumno'>Mis Datos</Link> }
                 <Segment raised>
                   <Header as='h3'>Ingreso de Pagos</Header>
-                  <Link to='/'>Logout</Link>
                   <Form onSubmit={this.onSubmitHomePage}>
                     <Form.Field>
                       <label>Fecha de Pago</label>
