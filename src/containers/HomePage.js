@@ -95,7 +95,7 @@ export class HomePage extends Component {
                 </Segment>
               </Grid.Column>
               <Grid.Column>
-                <Segment raised>
+                <Segment raised style={{ marginTop: '32px'}}>
                 { role === 'STUDENT' ? <MyPayments /> : <div></div>}
                   <SweetAlert
                       show={this.state.show}

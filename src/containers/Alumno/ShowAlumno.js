@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withSwalInstance } from 'sweetalert2-react'
 import swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 const SweetAlert = withSwalInstance(swal)
 
@@ -55,6 +56,7 @@ export class ShowAlumno extends Component {
           <Grid.Row columns={2}>
             <Grid.Column>
               <Segment basic>
+                <Link to='/HomePage'>Volver a la página principal</Link>
                 <Card centered>
                   <Image fluid src={personImagen} />
                   <Card.Content>
@@ -74,7 +76,7 @@ export class ShowAlumno extends Component {
               </Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment basic>
+              <Segment basic style={{ marginTop: '32px'}}>
                 <Form onSubmit={this.onSubmit}>
                   <Form.Field>
                     <Form.Input fluid label='Nombre Alumno' placeholder='' name='nombre_alumno' onChange={this.onChange}/>

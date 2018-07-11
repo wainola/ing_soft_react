@@ -41,7 +41,7 @@ class Navbar extends Component{
                 />
                 {isAuthenticated ? 
                     <Menu.Item 
-                        name='Logout'
+                        name='Cerrar Sesión'
                         position='right'
                         active={activeItem === 'Logout'}
                         onClick={this.handleItemClick}
@@ -52,7 +52,7 @@ class Navbar extends Component{
                         to='/'
                         position='right'
                         color='blue'
-                        name='Logout'
+                        name='Cerrar Sesión'
                         active={activeItem === 'Signin'}
                         onClick={this.handleItemClick} />
                     }
