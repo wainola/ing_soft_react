@@ -12,7 +12,8 @@ import {
   GET_CONTRATS,
   LOGOUT,
   GET_MY_PAYMENTS,
-  REFRESH_SESSION
+  REFRESH_SESSION,
+  SET_ALUMNO
 } from './types'
 import axios from 'axios'
 
@@ -60,6 +61,15 @@ export const getMyPayments = payload => ({
 export const refreshSession = payload => ({
   type: REFRESH_SESSION,
   payload
+})
+
+export const setAlumno = payload => ({
+  type: SET_ALUMNO,
+  payload
+})
+
+export const getAlumnos = () => ({
+  type: GET_STUDENTS
 })
 
 // async actions

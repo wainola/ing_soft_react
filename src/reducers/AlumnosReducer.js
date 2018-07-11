@@ -1,6 +1,7 @@
 import {
     CREATE_STUDENT,
-    GET_STUDENTS
+    GET_STUDENTS,
+    SET_ALUMNO
 } from '../actions/types'
 
 import uuid from 'uuid'
@@ -39,8 +40,17 @@ export default function(state=initialState, action){
             initialState.students.push(action.payload)
             return { ...initialState }
         case GET_STUDENTS:
-            return initialState
+            return state
+        case SET_ALUMNO:
+            console.log(state)
+            let newState = state
+            newState.students[0].nombre_alumno = action.payload.nombre_alumno
+            newState.students[0].apellido_alumno = action.payload.apellido_alumno
+            newState.students[0].correo_alumno = action.payload.correo_alumno
+            console.log('newState', newState)
+            console.log(action.payload)
+            return newState
         default:
-            return initialState
+            return state
     }
 }

@@ -71,6 +71,7 @@ export class HomePage extends Component {
           <Grid stackable>
             <Grid.Row columns={2}>
               <Grid.Column>
+                <Link to='/DatosAlumno'>Mis Datos</Link>
                 <Segment raised>
                   <Header as='h3'>Ingreso de Pagos</Header>
                   <Link to='/'>Logout</Link>

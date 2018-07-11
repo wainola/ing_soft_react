@@ -11,6 +11,7 @@ import AuthRoute from './AuthRouter/AuthRoute'
 import Navbar from '../components/Navbar'
 import Home from '../containers/Home'
 import HomePage from '../containers/HomePage'
+import ShowAlumno from '../containers/Alumno/ShowAlumno'
 
 export class Routes extends Component {
   constructor(props){
@@ -45,6 +46,7 @@ export class Routes extends Component {
             <Navbar visible={visible} handleVisible={this.handleVisible} />
             <GuestRoute location={location} exact path='/' component={Home} />
             <AuthRoute location={location} exact path='/HomePage' component={HomePage} />
+            <AuthRoute location={location} exact path='/DatosAlumno' component={ShowAlumno} />
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
