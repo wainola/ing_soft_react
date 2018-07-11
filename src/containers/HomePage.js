@@ -65,6 +65,7 @@ export class HomePage extends Component {
   }
   render() {
     const role = JSON.parse(localStorage.getItem('user')).role
+    console.log('role', role)
     return (
       <Responsive>
         <Container>

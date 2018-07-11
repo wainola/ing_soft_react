@@ -15,6 +15,7 @@ class Navbar extends Component{
         }
     }
     handleItemClick = (e, { name }) => {
+        console.log('e.target.text', e.target.text)
         if(e.target.text === 'Logout'){
             this.props.logout()
         }
