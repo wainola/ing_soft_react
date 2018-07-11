@@ -74,19 +74,7 @@ export class HomePage extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment raised>
-                  {!lodash.isUndefined(this.props.pago.data.pagos) ?
-                    <div>
-                      Pagos
-                    </div>
-                    :
-                    <Message icon>
-                      <Icon name='circle notched' loading />
-                      <Message.Content>
-                        <Message.Header>Just one second</Message.Header>
-                        We are fetching that content for you.
-                      </Message.Content>
-                    </Message>
-                  }
+                  
                   <SweetAlert
                       show={this.state.show}
                       title={'Éxito al generar pago'}

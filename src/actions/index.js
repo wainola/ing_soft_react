@@ -3,7 +3,13 @@ import {
   OK_LOGIN,
   FAIL_LOGIN,
   GET_PAYMENTS,
-  SEND_PAYMENTS
+  SEND_PAYMENTS,
+  CREATE_STUDENT,
+  GET_STUDENTS,
+  CREATE_GRADE,
+  GET_GRADES,
+  CREATE_CONTRACT,
+  GET_CONTRATS
 } from './types'
 import axios from 'axios'
 
@@ -34,6 +40,12 @@ export const sendPayments = payload => ({
   payload
 })
 
+export const createStudent = payload => ({
+  type: CREATE_STUDENT,
+  payload
+})
+
+// async actions
 export const getPayments = () => dispatch => {
   axios.get(`${ROOT_URL}/api/payments`)
   .then(res => {
