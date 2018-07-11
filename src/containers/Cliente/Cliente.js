@@ -7,9 +7,28 @@ import {
   Form,
   Button
 } from 'semantic-ui-react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { login } from '../../actions/index'
 
 export class Cliente extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      logged: false
+    }
+  }
+  onSubmit = e => {
+    e.preventDefault()
+    const alumno = e.target[0].value
+    const password = e.target[1].value
+    this.props.login({alumno, password})
+    this.setState({ logged: true })
+  }
   render() {
+    if(this.state.logged){
+      this.props.history.push('/HomePage')
+    }
     return (
       <Responsive>
         <Container>
@@ -17,7 +36,7 @@ export class Cliente extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Header as='h2'>Ingreso Cliente</Header>
-                <Form>
+                <Form onSubmit={this.onSubmit}>
                   <Form.Field>
                     <label>Cliente</label>
                     <input type="text" placeholder='alumno'/>
@@ -39,4 +58,12 @@ export class Cliente extends Component {
   }
 }
 
-export default Cliente
+function mapStateToProps({auth}){
+  return { auth }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({login}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cliente)

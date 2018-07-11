@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { withSwalInstance } from 'sweetalert2-react'
 import swal from 'sweetalert2'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { getPayments } from '../actions/index'
 import {
   Grid,
   Responsive,
@@ -9,8 +12,11 @@ import {
   Form,
   Header,
   Segment,
-  Button
+  Button,
+  Message,
+  Icon
 } from 'semantic-ui-react'
+import * as lodash from 'lodash'
 
 const SweetAlert = withSwalInstance(swal)
 
@@ -20,6 +26,10 @@ export class HomePage extends Component {
     this.state = {
       show: false
     }
+  }
+  componentWillMount(){
+    this.props.getPayments()
+
   }
   onSubmitHomePage = e => {
     e.preventDefault()
@@ -33,6 +43,7 @@ export class HomePage extends Component {
     })
   }
   render() {
+    console.log('this.props', this.props)
     return (
       <Responsive>
         <Container>
@@ -63,6 +74,19 @@ export class HomePage extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment raised>
+                  {!lodash.isEmpty(this.props.pago) ?
+                    <div>
+                      Pagos
+                    </div>
+                    :
+                    <Message icon>
+                      <Icon name='circle notched' loading />
+                      <Message.Content>
+                        <Message.Header>Just one second</Message.Header>
+                        We are fetching that content for you.
+                      </Message.Content>
+                    </Message>
+                  }
                   <SweetAlert
                       show={this.state.show}
                       title={'Éxito al generar pago'}
@@ -79,4 +103,12 @@ export class HomePage extends Component {
   }
 }
 
-export default HomePage
+function mapStateToProps({pago}){
+  return { pago }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({getPayments}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

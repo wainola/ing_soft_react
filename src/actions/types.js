@@ -1,3 +1,5 @@
 export const DO_LOGIN = 'DO_LOGIN'
 export const OK_LOGIN = 'OK_LOGIN'
 export const FAIL_LOGIN = 'FAIL_LOGIN'
+export const GET_PAYMENTS = 'GET_PAYMENTS'
+export const SEND_PAYMENTS = 'SEND_PAYMENTS'

@@ -21,10 +21,7 @@ export class Home extends Component {
   render() {
     const panes = [
       {
-        menuItem: 'Alumnos', render: () => <Tab.Pane><Alumno {...this.props}  /></Tab.Pane>
-      },
-      {
-        menuItem: 'Apoderados', render: () => <Tab.Pane><Apoderados /></Tab.Pane>
+        menuItem: 'Cliente', render: () => <Tab.Pane><Cliente {...this.props}  /></Tab.Pane>
       },
       {
         menuItem: 'Ejecutivo', render: () => <Tab.Pane><Cliente /></Tab.Pane>

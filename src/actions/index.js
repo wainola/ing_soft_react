@@ -1,8 +1,13 @@
 import {
   DO_LOGIN,
   OK_LOGIN,
-  FAIL_LOGIN
+  FAIL_LOGIN,
+  GET_PAYMENTS,
+  SEND_PAYMENTS
 } from './types'
+import axios from 'axios'
+
+const ROOT_URL = 'http://localhost:9000'
 
 export const doLogin = payload => ({
   type: DO_LOGIN,
@@ -22,4 +27,20 @@ export const login = body => dispatch => {
   dispatch(doLogin(body))
   dispatch(okLogin(body))
   // dispatch(failLogin(body))
+}
+
+export const sendPayments = payload => ({
+  type: SEND_PAYMENTS,
+  payload
+})
+
+export const getPayments = () => dispatch => {
+  axios.get(`${ROOT_URL}/api/payments`)
+  .then(res => {
+    console.log('res', res)
+    return dispatch(sendPayments(res))
+  })
+  .catch(err => {
+    console.log('err', err)
+  })
 }
