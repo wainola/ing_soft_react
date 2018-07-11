@@ -4,7 +4,7 @@ import { withSwalInstance } from 'sweetalert2-react'
 import swal from 'sweetalert2'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { getPayments } from '../actions/index'
+import { getPayments, logout } from '../actions/index'
 import {
   Grid,
   Responsive,
@@ -27,12 +27,9 @@ export class HomePage extends Component {
   constructor(props){
     super(props)
     this.state = {
-      show: false
+      show: false,
+      countLogged: 0
     }
-  }
-  componentWillMount(){
-    // this.props.getPayments()
-
   }
   onSubmitHomePage = e => {
     e.preventDefault()
@@ -46,7 +43,6 @@ export class HomePage extends Component {
     })
   }
   render() {
-    console.log('this.props', this.props)
     const role = !lodash.isUndefined(this.props.auth.role) ? this.props.auth.role : 'NO_ROLE'
     return (
       <Responsive>
@@ -78,8 +74,7 @@ export class HomePage extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment raised>
-                <p>Role: {role}</p>
-                { role === 'STUDENT' ? <MyPayments /> : <GetStudents />}
+                { role === 'STUDENT' ? <MyPayments /> : <div></div>}
                   <SweetAlert
                       show={this.state.show}
                       title={'Éxito al generar pago'}
@@ -101,7 +96,7 @@ function mapStateToProps({pago, auth}){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({getPayments}, dispatch)
+  return bindActionCreators({getPayments, logout}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

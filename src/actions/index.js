@@ -10,7 +10,9 @@ import {
   GET_GRADES,
   CREATE_CONTRACT,
   GET_CONTRATS,
-  LOGOUT
+  LOGOUT,
+  GET_MY_PAYMENTS,
+  REFRESH_SESSION
 } from './types'
 import axios from 'axios'
 
@@ -47,6 +49,16 @@ export const sendPayments = payload => ({
 
 export const createStudent = payload => ({
   type: CREATE_STUDENT,
+  payload
+})
+
+export const getMyPayments = payload => ({
+  type: GET_MY_PAYMENTS,
+  payload
+})
+
+export const refreshSession = payload => ({
+  type: REFRESH_SESSION,
   payload
 })
 
