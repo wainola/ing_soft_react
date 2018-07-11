@@ -12,6 +12,7 @@ import Navbar from '../components/Navbar'
 import Home from '../containers/Home'
 import HomePage from '../containers/HomePage'
 import ShowAlumno from '../containers/Alumno/ShowAlumno'
+import Metricas from '../containers/Metricas'
 
 export class Routes extends Component {
   constructor(props){
@@ -47,6 +48,7 @@ export class Routes extends Component {
             <GuestRoute location={location} exact path='/' component={Home} />
             <AuthRoute location={location} exact path='/HomePage' component={HomePage} />
             <AuthRoute location={location} exact path='/DatosAlumno' component={ShowAlumno} />
+            <AuthRoute location={location} exact path='/Metricas' component={Metricas} />
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>

@@ -46,9 +46,7 @@ export class ShowAlumno extends Component {
     })
   }
   render() {
-    console.log('this.props', this.props)
     const firstAlumno = this.props.alumno.students[0]
-    console.log('firstAlumbo', firstAlumno)
     return (
       <Responsive>
         <Container>

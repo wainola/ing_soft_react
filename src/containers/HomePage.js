@@ -72,7 +72,7 @@ export class HomePage extends Component {
           <Grid stackable>
             <Grid.Row columns={2}>
               <Grid.Column>
-                <Link to='/DatosAlumno'>Mis Datos</Link>
+                { role === 'EXECUTIVE' ? <Link to='/Metricas'>Métricas</Link> : <Link to='/DatosAlumno'>Mis Datos</Link> }
                 <Segment raised>
                   <Header as='h3'>Ingreso de Pagos</Header>
                   <Link to='/'>Logout</Link>
@@ -97,7 +97,7 @@ export class HomePage extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment raised style={{ marginTop: '32px'}}>
-                { role === 'STUDENT' ? <MyPayments /> : <div></div>}
+                { role === 'STUDENT' ? <MyPayments /> : <GetStudents />}
                   <SweetAlert
                       show={this.state.show}
                       title={'Éxito al generar pago'}

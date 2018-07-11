@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const AuthRoute = ({ isAuthenticated, componet: Component, location, ...rest }) => {
-  console.log('AuthRoute', isAuthenticated)
   return (
     <Route 
       {...rest}

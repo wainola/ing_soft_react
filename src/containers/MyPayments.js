@@ -15,7 +15,6 @@ export class MyPayments extends Component {
     this.props.getMyPayments()
   }
   render() {
-    console.log('this.props myPayments', this.props)
     return (
       <div>
         <Header as='h3'>Sus pagos</Header>
