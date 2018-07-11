@@ -74,7 +74,7 @@ export class HomePage extends Component {
               </Grid.Column>
               <Grid.Column>
                 <Segment raised>
-                  {!lodash.isEmpty(this.props.pago) ?
+                  {!lodash.isUndefined(this.props.pago.data.pagos) ?
                     <div>
                       Pagos
                     </div>
